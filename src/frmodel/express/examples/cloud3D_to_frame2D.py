@@ -31,17 +31,17 @@ CONTRAST = 2
 #%%
 
 f = Frame2D.from_image_spec(
-    "rsc/imgs/spec/chestnut_10May_90deg43m85pct255deg/map/result_Red.tif",
-    "rsc/imgs/spec/chestnut_10May_90deg43m85pct255deg/map/result_Green.tif",
-    "rsc/imgs/spec/chestnut_10May_90deg43m85pct255deg/map/result_Blue.tif",
-    "rsc/imgs/spec/chestnut_10May_90deg43m85pct255deg/map/result_RedEdge.tif",
-    "rsc/imgs/spec/chestnut_10May_90deg43m85pct255deg/map/result_NIR.tif",
+    "rsc/imgs/spec/chestnut/10May2021/90deg43m85pct255deg/map/result_Red.tif",
+    "rsc/imgs/spec/chestnut/10May2021/90deg43m85pct255deg/map/result_Green.tif",
+    "rsc/imgs/spec/chestnut/10May2021/90deg43m85pct255deg/map/result_Blue.tif",
+    "rsc/imgs/spec/chestnut/10May2021/90deg43m85pct255deg/map/result_RedEdge.tif",
+    "rsc/imgs/spec/chestnut/10May2021/90deg43m85pct255deg/map/result_NIR.tif",
     scale=SCALING
 )
-c = Cloud3D.from_las("rsc/las/chestnut_10May/terra_las/cloud.las")
+c = Cloud3D.from_las("rsc/las/chestnut/cloud.las")
 #%%
 # The geotiff path is just any geotiff file that has the metadata of the coords.
-z = c.to_frame(geotiff_path="rsc/imgs/spec/chestnut_10May_90deg43m85pct255deg/map/result_Red.tif",
+z = c.to_frame(geotiff_path="rsc/imgs/spec/chestnut/10May2021/90deg43m85pct255deg/map/result_Red.tif",
                shape=(f.shape[0], f.shape[1]),
                samples=CLOUD_SAMPLES).data[...,0]
 #%%

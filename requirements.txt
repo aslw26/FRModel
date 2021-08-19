@@ -2,7 +2,7 @@ plotly
 pillow
 opencv-python
 pandas
-numpy
+numpy>=1.21
 scipy
 scikit-image
 scikit-learn
@@ -10,3 +10,4 @@ utm
 GDAL
 Cython
 seaborn
+laspy<2.0
