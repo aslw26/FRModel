@@ -1,22 +1,24 @@
-import os
-import unittest
+import pytest
 
 from frmodel.base.D2 import Frame2D
+from tests.path import RSC_PATH
 
-_DIR = os.path.dirname(os.path.realpath(__file__))
-_RSC = _DIR + "/../../../rsc"
+# Arrange
+@pytest.fixture
+def frame_box():
+    return Frame2D.from_image(RSC_PATH + f"imgs/rgb/test/box.png")
 
+# Arrange
+@pytest.fixture
+def f():
+    return Frame2D.from_image(RSC_PATH + f"imgs/rgb/test/sample.jpg")
 
-class TestD2Fixture(unittest.TestCase):
+# Arrange
+@pytest.fixture
+def fs():
+    return Frame2D.load(RSC_PATH + f"imgs/spec/test/sample.npz")
 
-    @classmethod
-    def setUp(cls) -> None:
-        cls.frame_box = Frame2D.from_image(f"{_DIR}/box.png")
-        cls.frame = Frame2D.from_image(f"{_DIR}/sample.jpg")
-        cls.window = 100
-        cls._RSC = _RSC
-        cls.channels = 3
-
-
-if __name__ == '__main__':
-    unittest.main()
+# Arrange
+@pytest.fixture
+def c():
+    return Frame2D.CHN

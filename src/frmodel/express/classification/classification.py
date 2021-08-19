@@ -32,8 +32,8 @@ class Classification:
 
     def __init__(self):
         print("Loading Frame")
-        self.m = Frame2D.load("rsc/imgs/spec/chestnut_10May_90deg43m85pct255deg/map/result.npz").data
-        self.d = Frame2D.load("rsc/imgs/spec/chestnut_18Dec/result.npz").data
+        # self.m = Frame2D.load("rsc/imgs/spec/chestnut_10May_90deg43m85pct255deg/map/result.npz").data
+        # self.d = Frame2D.load("rsc/imgs/spec/chestnut_18Dec/result.npz").data
         print("Getting Labels")
         self.m_label = self.get_labels("rsc/imgs/spec/chestnut_10May_90deg43m85pct255deg/Labelling.csv")
         self.d_label = self.get_labels("rsc/imgs/spec/chestnut_18Dec/Labelling.csv")

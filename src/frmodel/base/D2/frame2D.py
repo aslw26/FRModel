@@ -127,7 +127,7 @@ class Frame2D(_Frame2DLoader,
         :returns: np.ndarray, Shape = (Height * Width)
         """
 
-        rgb = self.data_rgb().data.astype(dtype=np.uint32)
+        rgb = self[..., self.CHN.RGB].data.astype(dtype=np.uint32)
         return rgb[..., 0] + rgb[..., 1] * 256 + rgb[..., 2] * (256 ** 2)
 
     def _labels_to_ix(self, labels: str or List[str]) -> List[int]:
@@ -152,14 +152,14 @@ class Frame2D(_Frame2DLoader,
         :param labels: Can be a single str or multiple in a List
         :returns: Frame2D, Shape=(Height, Width, Channels)
         """
-        return self.create(self.data[..., self._labels_to_ix(labels)], labels)
+        return self[..., labels]
 
     def data_rgb(self) -> Frame2D:
         """ Gets RGB as another Frame2D
 
         :returns: Frame2D, Shape=(Height, Width, RGB Channels)
         """
-        return self.data_chn(CONSTS.CHN.RGB)
+        return self[..., self.CHN.RGB]
 
     def append(self, ar: np.ndarray, labels: str or Tuple[str]) -> Frame2D:
         """ Appends another channel onto the Frame2D.
@@ -198,25 +198,19 @@ class Frame2D(_Frame2DLoader,
         if arg[0] == Ellipsis:
             arg = [slice(None, None, None), slice(None, None, None), arg[-1]]
 
-        if isinstance(arg[0], int):
-            arg[0] = slice(arg[0], arg[0]+1, None)
-        if isinstance(arg[1], int):
-            arg[1] = slice(arg[1], arg[1]+1, None)
+        if isinstance(arg[0], int): arg[0] = slice(arg[0], arg[0]+1, None)
+        if isinstance(arg[1], int): arg[1] = slice(arg[1], arg[1]+1, None)
 
         if len(arg) < 3:
             # For this, we pass to numpy to handle XY slicing
-            return self.create(self.data.__getitem__(*args, **kwargs),
-                               self.labels)
+            return Frame2D(self.data.__getitem__(*args, **kwargs), self.labels)
         elif len(arg) == 3:
             # Handle Channel Indexing here
             if isinstance(arg[2], (Iterable, str)):
                 # Means, we get a list of indexes to index
                 if len(set(arg[2])) != len(list(arg[2])) and not isinstance(arg[2], str):
                     raise KeyError("Cannot index duplicate labels.")
-                return self.create(
-                    self.data.__getitem__((*arg[:-1], self._labels_to_ix(arg[2]))),
-                    labels=arg[2]
-                )
+                return Frame2D(self.data.__getitem__((*arg[:-1], self._labels_to_ix(arg[2]))), labels=arg[2])
             else:
                 raise KeyError(f"Cannot slice the Channel Index, use Indexes. {arg} provided")
         else:
