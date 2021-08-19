@@ -26,6 +26,7 @@ No errors should pop up.
 # Dependencies
 
 The following repository requires `GDAL`. Refer to the following website for more information for the installation of `GDAL`: https://gdal.org/download.html
+
 For Mac OS > 10, you may run `brew install GDAL` to install the package.
 
 ## Python Packages
