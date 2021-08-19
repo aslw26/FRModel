@@ -21,3 +21,10 @@ sphinx/build/
 sphinx/batch.log
 tests/*.png
 /build/
+
+# Mac jives
+**.DS_Store
+
+# Cython builds
+src/frmodel.egg-info
+src/frmodel/base/D2/frame/**.so
