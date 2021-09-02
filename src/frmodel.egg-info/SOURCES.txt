@@ -27,6 +27,8 @@ frmodel/base/D3/__init__.py
 frmodel/base/D3/cloud3D.py
 frmodel/base/D3/cloud/__init__.py
 frmodel/base/D3/cloud/_cloud_frame.py
+frmodel/data/__init__.py
+frmodel/data/load.py
 frmodel/express/__init__.py
 frmodel/express/anova/__init__.py
 frmodel/express/anova/anova.py
@@ -39,3 +41,5 @@ frmodel/express/examples/cloud3D_to_frame2D.py
 frmodel/express/kmeans/__init__.py
 frmodel/express/kmeans/_kmeans_scoring.py
 frmodel/express/kmeans/kmeans_scoring.py
+frmodel/express/mnl/__init__.py
+frmodel/express/mnl/mnl.py

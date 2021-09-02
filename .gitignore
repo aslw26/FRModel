@@ -29,3 +29,7 @@ tests/*.png
 src/frmodel.egg-info
 src/frmodel/base/D2/frame/**.so
 tests/path.py
+
+***.npz
+yay.jpg
+**.ipynb

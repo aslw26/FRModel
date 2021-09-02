@@ -1,2 +1,2 @@
-pip install -e src/.
+#pip install -e src/.
 python script.py
