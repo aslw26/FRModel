@@ -30,8 +30,6 @@ frmodel/base/D3/cloud/_cloud_frame.py
 frmodel/data/__init__.py
 frmodel/data/load.py
 frmodel/express/__init__.py
-frmodel/express/anova/__init__.py
-frmodel/express/anova/anova.py
 frmodel/express/channel/__init__.py
 frmodel/express/channel/channel.py
 frmodel/express/classification/__init__.py
@@ -43,3 +41,5 @@ frmodel/express/kmeans/_kmeans_scoring.py
 frmodel/express/kmeans/kmeans_scoring.py
 frmodel/express/mnl/__init__.py
 frmodel/express/mnl/mnl.py
+frmodel/express/stats/__init__.py
+frmodel/express/stats/anova.py
